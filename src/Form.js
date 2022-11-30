@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import InputMask from 'react-input-mask';
 
 class Form extends Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class Form extends Component {
 
     render() {
         const { name, job } = this.state; 
-
+        const maskString = new Array(5).fill(9).join('');
         return (
             <form onSubmit={this.onFormSubmit}>
                 <label for="name">Name</label>
@@ -46,6 +47,12 @@ class Form extends Component {
                     id="job"
                     value={job} 
                     onChange={this.handleChange} />
+                    <InputMask   
+                        mask={maskString}
+                        maskChar="&#9675;"
+                        alwaysShowMask
+                        data-testid="myDate">
+                    </InputMask>
                 <button type="submit">
                     Submit
                 </button>
